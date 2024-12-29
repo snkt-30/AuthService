@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const Router = require("./router/index");
 const bcrypt = require("bcrypt");
 const { user } = require("./models/index");
+const UserRepository = require("./repository/user-repository");
 
 const prepareAndStartServer = async () => {
   //
@@ -16,6 +17,10 @@ const prepareAndStartServer = async () => {
   app.use("/api", Router);
   //
   app.listen(PORT, async () => {
+    // const repo = new UserRepository();
+    // console.log(await repo.getById(1));
+    
+
     // const incomingPassoword = "Sanket@1130";
     // const res = await user.findByPk(2);
     // const response = bcrypt.compareSync(incomingPassoword, res.password);
