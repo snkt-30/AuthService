@@ -71,8 +71,29 @@ const isAuthenticated = async (req, res) => {
   }
 };
 
+const isAdmin = async (req, res) => {
+  try {
+    const response = await userService.isAdmin(req.body.id);
+    return res.status(200).json({
+      data: response,
+      success: true,
+      message: "Successfully fetched wheater a user is admin or not",
+      error: {},
+    });
+  } catch (error) {
+    console.log("error is :", error);
+    return res.status(501).json({
+      data: {},
+      success: false,
+      message: "Failed to create User",
+      error: error,
+    });
+  }
+};
+
 module.exports = {
   create,
   signIn,
   isAuthenticated,
+  isAdmin,
 };
